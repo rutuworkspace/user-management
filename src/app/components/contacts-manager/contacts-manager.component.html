@@ -1,0 +1,95 @@
+
+<div class="container">
+    <div *ngIf="error" class="alert alert-danger my-5" role="alert">
+        <span><strong>An Error Occured : </strong>{{error}}</span>
+      </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p class="h3 text-danger fw-bold mt-5">Contact Management Dashboard&nbsp;
+                <a routerLink="/contacts/add" class="btn btn-primary btn-sm"><fa-icon [icon]="faCirclePlus"></fa-icon>&nbsp;&nbsp;Add New Contact</a>
+            </p>
+            <p class="fst-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, nisi ut quia sunt perferendis fuga at! 
+                Beatae voluptatum, optio blanditiis neque nemo repellendus. At iste recusandae nesciunt nisi. Aperiam, quam.</p>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col bg-light py-2">
+                    <h3 class="fw-bold">Welcome, {{profileUser.displayName ? profileUser.displayName : 'User'}}</h3>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-3">
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()" placeholder="Enter First Name to Search Contact">
+                        </div>
+<!--                   
+                         <div class="col">
+                            <button class="btn btn-primary">Search</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!--Loading Spinner-->
+<div *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+
+
+<!--Error Message-->
+<!-- <div *ngIf="!loading && errorMessage">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="h4 text-danger fw-bold mt-5">{{errorMessage}}</div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!--Cards-->
+<div class="container mt-5" *ngIf="!loading && contacts.length > 0">
+    <div class="row">
+        <div class="col-md-6"  *ngFor="let contact of contacts; index as i">
+            <div class="card list-group-item-danger shadow-lg my-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-sm-4">
+                            <img src="{{contact.photo ?  contact.photo  :  'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png'}}" class="rounded-circle" width="120" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <ul class="list-group">
+                                <li class="list-group-item">Name   : <span class="fw-bold">{{contact.name}}</span></li>
+                                <li class="list-group-item">Email  : <span class="fw-bold">{{contact.email}}</span></li>
+                                <li class="list-group-item">Mobile : <span class="fw-bold">{{contact.mobile}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-1 d-flex flex-column justify-content-centen align-items-center">
+                            <a routerLink="/contacts/view/{{contact.userId}}" class="btn btn-warning"><fa-icon [icon]="faEye"></fa-icon></a>
+                            <a routerLink="/contacts/edit/{{contact.userId}}" class="btn btn-primary my-1"><fa-icon [icon]="faPen"></fa-icon></a>
+                            <!-- <button (click)="onDeleteContact(contact.userId,i)" class="btn btn-danger"><fa-icon [icon]="faTrash"></fa-icon></button> -->
+                            <button (click)="onDeleteContact(contact.userId)" class="btn btn-danger"><fa-icon [icon]="faTrash"></fa-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

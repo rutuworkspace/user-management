@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+//Bootatrsp-CSS
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Google font - ubuntu
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: antiquewhite;
+}
+
+.contact-img{
+    width: 150px;
+    border-radius: 50%;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid #e74c3c !important; 
+    box-shadow:  inset  red,
+    0 0  0 2px rgb(255,255,255),
+    0.3em 0.3em 1em red;
+    box-shadow: 0 0 13px inset rgb(255, 0, 0, 0.2);
+  }

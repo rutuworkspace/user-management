@@ -1,0 +1,88 @@
+
+
+<div class="container">
+    <!-- <div *ngIf="error" class="alert alert-danger my-5" role="alert">
+        <span><strong>An Error Occured : </strong>{{error}}</span>
+      </div> -->
+
+      <app-alert-modal [error]="error" *ngIf="error" (close)="error=null;"></app-alert-modal>
+</div>
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="card card-body bg-light d-flex justify-content-center align-items-center shadow">
+            <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+            <div class="row my-3">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="../../../assets/logo.png" class="contact-img" alt="">
+                        <h3 class="mb-5 fw-bold text-danger">
+                            {{loginMode? 'Sign In' : 'Sign Up'}}
+                            into <span class="text-info">Contacts Management System</span>
+                        </h3>
+                    </div>
+                </div>
+        
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <fa-icon [icon]="faEnvelope"></fa-icon>                
+                            </span>
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter Email">
+                            <div class="w-100" *ngIf="f['email'].touched && f['email'].errors">
+                                <div *ngIf="f['email'].errors['required']" class="text-danger">
+                                      Email is Required
+                                  </div>
+                                  <div *ngIf="f['email'].errors['email']" class="text-danger">
+                                    Enter valid Email Address
+                                  </div>
+                                </div> 
+                          </div>
+                
+                          <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <fa-icon [icon]="faLock"></fa-icon>
+                            </span>
+                            <input type="password" class="form-control" formControlName="password" placeholder="Enter Password">
+                            <div class="w-100" *ngIf="f['password'].touched && f['password'].errors">
+                            <small *ngIf="f['password'].errors['required']" class="text-danger">
+                                Password Required
+                            </small>
+                            <small *ngIf="f['password'].errors['minlength']" class="text-danger">
+                                Password must be at least 4 characters
+                            </small>
+                        </div>
+                          </div>
+                          <button class="btn col-12 btn-primary " type="submit">{{loginMode? 'Sign In' : 'Create Account'}}</button>
+                          <p class="mb-0">{{loginMode? 'Dont have account?' : 'Already have Account?'}} <a href="#" (click)="onDataSwitch()">{{loginMode? 'Create One' :'Sign In'}}</a></p>
+                          <a routerLink="/forget-password">Forgot Password</a>
+                        
+                    </div>
+<!--                     
+                    <div class="col-md-2 text-center my-5">
+                        <span class="h3 fw-bold">OR</span>
+                    </div>
+                
+                    <div class="col-md-6" style="margin:auto 0">
+                        <h4 class="fw-bold text-center">Go With Social!</h4>
+                        <p class="text-center">Get Started with your Social Accounts</p>
+                        <div class="mb-3 text-center">
+                            <button type="button" class="btn btn-outline-danger text-center col-8" (click)="onGoogleSignIn()">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" width="18" alt="">
+                               &nbsp;Signin Via Google</button> 
+                          </div>
+                
+                          <div class="mb-3 text-center">
+                            <button type="button" class="btn btn-outline-info text-center col-8">Signin Via facebook</button>
+                          </div>
+                    </div> -->
+                </div>
+                
+        
+        </div>
+        </form>
+            </div>
+    </div>
+</div>
